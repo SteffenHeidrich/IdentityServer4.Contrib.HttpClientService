@@ -1,19 +1,13 @@
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Linq;
-using System.Net.Http;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
-using IdentityModel.Client;
-using System.Net;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CommonValues;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.Tests
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Ifrastracture
 {
     [TestClass]
     public class TokenResponseCacheManagerTests

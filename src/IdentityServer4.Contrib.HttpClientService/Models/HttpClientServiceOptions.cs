@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IdentityServer4.Contrib.HttpClientService.Models
+﻿namespace IdentityServer4.Contrib.HttpClientService.Models
 {
     /// <summary>
     /// Settings for the HttpClientService

@@ -1,6 +1,4 @@
-﻿using IdentityServer4.Contrib.HttpClientService.Models;
-
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+﻿namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces
 {
     /// <summary>
     /// Abstraction for an <see cref="IIdentityServerHttpClient"/> selector. 

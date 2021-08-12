@@ -1,10 +1,11 @@
-﻿using IdentityModel.Client;
-using Microsoft.Extensions.Caching.Memory;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using IdentityModel.Client;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces;
+using Microsoft.Extensions.Caching.Memory;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer
 {
     /// <summary>
     /// Cache manager for the IdentityServer4 <see cref="TokenResponse"/>. 

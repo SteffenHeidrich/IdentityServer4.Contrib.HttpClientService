@@ -1,10 +1,11 @@
-﻿using IdentityServer4.Contrib.HttpClientService.Models;
+﻿using System;
+using System.Net.Http;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces;
+using IdentityServer4.Contrib.HttpClientService.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using System;
-using System.Net.Http;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.Core
 {
     /// <summary>
     /// A <see cref="HttpRequestMessage"/> factory.

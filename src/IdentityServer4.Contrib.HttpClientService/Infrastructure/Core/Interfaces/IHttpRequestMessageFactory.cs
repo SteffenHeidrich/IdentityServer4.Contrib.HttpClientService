@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces
 {
     /// <summary>
     /// Abstraction for an <see cref="HttpRequestMessage"/> factory.

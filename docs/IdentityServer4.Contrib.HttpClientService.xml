@@ -816,7 +816,7 @@
         </member>
         <member name="T:IdentityServer4.Contrib.HttpClientService.HttpClientService">
             <summary>
-            The request service implemantation
+            The request service implementation
             </summary>
         </member>
         <member name="M:IdentityServer4.Contrib.HttpClientService.HttpClientService.HeadersAdd(System.String,System.String)">
@@ -880,11 +880,11 @@
             <summary>
             Sets the IdentityServer4 options for retrieving an access token s by passing the appsettings configuration section 
             that contain the necessary configuration keys. The section name should be or end with 
-            either <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions"/> or <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions"/>.
+            either <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions"/> or <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions"/>.
             </summary>
             <param name="configurationSection">
             The name of the configuration section that contains the information for requesting an access token. 
-            It should be or end with either <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions"/> or <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions"/>.
+            It should be or end with either <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions"/> or <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions"/>.
             </param>
             <returns>Returns the current instance of <see cref="T:IdentityServer4.Contrib.HttpClientService.HttpClientService"/> for method chaining.</returns>
         </member>
@@ -905,9 +905,9 @@
         </member>
         <member name="M:IdentityServer4.Contrib.HttpClientService.HttpClientService.SetIdentityServerOptions``1(``0)">
             <summary>
-            Sets the IdentityServer4 options by passing an object that inherits from <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions"/>
+            Sets the IdentityServer4 options by passing an object that inherits from <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions"/>
             </summary>
-            <param name="options">The <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions"/> that contains the options.</param>
+            <param name="options">The <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions"/> that contains the options.</param>
         </member>
         <member name="M:IdentityServer4.Contrib.HttpClientService.HttpClientService.GetTokenResponse">
             <summary>
@@ -927,7 +927,7 @@
             Creates and sends a request to the <paramref name="requestUri"/> using the HTTP verb 
              from <paramref name="httpMethod"/> and the request body from <paramref name="requestBody"/>. 
             If IdentityServerOptions are set (using the <see cref="M:IdentityServer4.Contrib.HttpClientService.HttpClientService.SetIdentityServerOptions``1(``0)"/> or one of the overloads), 
-            then a valid access token will be fetched by the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerService"/> and attached to this request. 
+            then a valid access token will be fetched by the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerService"/> and attached to this request. 
             </summary>
             <typeparam name="TResponseBody">
                 The type of the property <see cref="P:IdentityServer4.Contrib.HttpClientService.Models.ResponseObject`1.BodyAsType"/> of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.ResponseObject`1"/> object,
@@ -1012,14 +1012,14 @@
             Lazy Singleton instantiation for use outside of a DI container.
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.HttpClientServiceFactory.#ctor(Microsoft.Extensions.Configuration.IConfiguration,IdentityServer4.Contrib.HttpClientService.Infrastructure.ICoreHttpClient,IdentityServer4.Contrib.HttpClientService.Infrastructure.IHttpRequestMessageFactory,IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerService)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.HttpClientServiceFactory.#ctor(Microsoft.Extensions.Configuration.IConfiguration,IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces.ICoreHttpClient,IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces.IHttpRequestMessageFactory,IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerService)">
             <summary>
             Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.HttpClientServiceFactory" />.
             </summary>
             <param name="configuration">Application configuration properties.</param>
-            <param name="coreHttpClient">An <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.ICoreHttpClient"/> implementation that will execute the HTTP requests.</param>
-            <param name="requestMessageFactory">The <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IHttpRequestMessageFactory"/> to get a new <see cref="T:System.Net.Http.HttpRequestMessage"/>.</param>
-            <param name="tokenResponseService">The <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerService"/> to retrieve a token, if required.</param>
+            <param name="coreHttpClient">An <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces.ICoreHttpClient"/> implementation that will execute the HTTP requests.</param>
+            <param name="requestMessageFactory">The <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces.IHttpRequestMessageFactory"/> to get a new <see cref="T:System.Net.Http.HttpRequestMessage"/>.</param>
+            <param name="tokenResponseService">The <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerService"/> to retrieve a token, if required.</param>
         </member>
         <member name="M:IdentityServer4.Contrib.HttpClientService.HttpClientServiceFactory.CreateHttpClientService">
             <summary>
@@ -1038,48 +1038,48 @@
             </summary>
             <returns>An <see cref="T:IdentityServer4.Contrib.HttpClientService.HttpClientService"/> instance.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.CoreHttpClient">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.CoreHttpClient">
             <summary>
             Implementation for a typed <see cref="T:System.Net.Http.HttpClient"/>.
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.CoreHttpClient.#ctor(System.Net.Http.HttpClient)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.CoreHttpClient.#ctor(System.Net.Http.HttpClient)">
             <summary>
-            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.CoreHttpClient"/>.
+            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.CoreHttpClient"/>.
             </summary>
             <param name="httpClient">An <see cref="T:System.Net.Http.HttpClient"/> that will execute the request</param>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.CoreHttpClient.SetTimeout(System.TimeSpan)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.CoreHttpClient.SetTimeout(System.TimeSpan)">
             <summary>
             Set the timeout for the next request.
             </summary>
             <param name="timeout">The timeout.</param>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.CoreHttpClient.SendAsync(System.Net.Http.HttpRequestMessage)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.CoreHttpClient.SendAsync(System.Net.Http.HttpRequestMessage)">
             <summary>
             Sends an <see cref="T:System.Net.Http.HttpResponseMessage"/>.
             </summary>
             <param name="httpRequestMessage">The <see cref="T:System.Net.Http.HttpResponseMessage"/> to be sent.</param>
             <returns>An <see cref="T:System.Net.Http.HttpResponseMessage"/>.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.HttpClientServiceHeaders">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.HttpClientServiceHeaders">
             <summary>
             A collection of headers and their values as defined in RFC 2616.
             </summary>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.HttpRequestMessageFactory">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.HttpRequestMessageFactory">
             <summary>
             A <see cref="T:System.Net.Http.HttpRequestMessage"/> factory.
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.HttpRequestMessageFactory.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.Extensions.Options.IOptions{IdentityServer4.Contrib.HttpClientService.Models.HttpClientServiceOptions})">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.HttpRequestMessageFactory.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.Extensions.Options.IOptions{IdentityServer4.Contrib.HttpClientService.Models.HttpClientServiceOptions})">
             <summary>
-            Constructor of the  <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.HttpRequestMessageFactory"/>
+            Constructor of the  <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.HttpRequestMessageFactory"/>
             </summary>
             <param name="httpContextAccessor">The <see cref="T:Microsoft.AspNetCore.Http.HttpContextAccessor"/> object to access <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>. </param>
             <param name="options">The HttpClientService options to use. </param>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.HttpRequestMessageFactory.CreateRequestMessage">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.HttpRequestMessageFactory.CreateRequestMessage">
             <summary>
             Adds an <c>X-HttpClientService</c> header in the newly created <see cref="T:System.Net.Http.HttpRequestMessage"/> by copying the <c>X-HttpClientService</c> of the current request.
             If there is no current request or the current request does not contain a <c>X-HttpClientService</c> header, it creates a new one.
@@ -1087,228 +1087,233 @@
             <remarks>This is useful to track in the logs a series of cascading requests between services.</remarks>
             <returns>An <see cref="T:System.Net.Http.HttpRequestMessage"/> to be used by an <see cref="T:System.Net.Http.HttpClient"/>.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.HttpRequestMessageFactoryDesktop">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.HttpRequestMessageFactoryDesktop">
             <summary>
             A <see cref="T:System.Net.Http.HttpRequestMessage"/> factory.
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.HttpRequestMessageFactoryDesktop.#ctor">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.HttpRequestMessageFactoryDesktop.#ctor">
             <summary>
-            Constructor of the  <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.HttpRequestMessageFactory"/>
+            Constructor of the  <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.HttpRequestMessageFactory"/>
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.HttpRequestMessageFactoryDesktop.CreateRequestMessage">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.HttpRequestMessageFactoryDesktop.CreateRequestMessage">
             <summary>
             Creates and returns a new <see cref="T:System.Net.Http.HttpRequestMessage"/>
             </summary>
             <returns>An <see cref="T:System.Net.Http.HttpRequestMessage"/> to be used by an <see cref="T:System.Net.Http.HttpClient"/>.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.ICoreHttpClient">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces.ICoreHttpClient">
             <summary>
             Abstraction for a typed <see cref="T:System.Net.Http.HttpClient"/>.
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.ICoreHttpClient.SendAsync(System.Net.Http.HttpRequestMessage)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces.ICoreHttpClient.SendAsync(System.Net.Http.HttpRequestMessage)">
             <summary>
             Sends an <see cref="T:System.Net.Http.HttpResponseMessage"/>.
             </summary>
             <param name="httpRequestMessage">The <see cref="T:System.Net.Http.HttpResponseMessage"/> to be sent</param>
             <returns>An <see cref="T:System.Net.Http.HttpResponseMessage"/>.</returns>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.ICoreHttpClient.SetTimeout(System.TimeSpan)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces.ICoreHttpClient.SetTimeout(System.TimeSpan)">
             <summary>
             Set the timeout for the next request.
             </summary>
             <param name="timeout">The timeout.</param>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IHttpRequestMessageFactory">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces.IHttpRequestMessageFactory">
             <summary>
             Abstraction for an <see cref="T:System.Net.Http.HttpRequestMessage"/> factory.
             </summary>    
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IHttpRequestMessageFactory.CreateRequestMessage">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces.IHttpRequestMessageFactory.CreateRequestMessage">
             <summary>
             Creates a new instance of an <see cref="T:System.Net.Http.HttpRequestMessage"/>.
             </summary>
             <returns>An <see cref="T:System.Net.Http.HttpRequestMessage"/> to be used by an <see cref="T:System.Net.Http.HttpClient"/>.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.TypeContent`1">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.TypeContent`1">
             <summary>
             TypeContent is following the implementation of <see cref="T:System.Net.Http.StringContent"/>.
             Copied from from https://github.com/microsoft/referencesource/blob/master/System/net/System/Net/Http/StringContent.cs
             </summary> 
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.TypeContent`1.#ctor(`0)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.TypeContent`1.#ctor(`0)">
             <summary>
-            Creates a new instance of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.TypeContent`1"/> class. 
+            Creates a new instance of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.TypeContent`1"/> class. 
             Default encoding is "UTF8" and media type "application/json".
             </summary>
-            <param name="model">The object of type <typeparamref name="TRequestBody"/> used to initialize the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.TypeContent`1"/>.</param>
+            <param name="model">The object of type <typeparamref name="TRequestBody"/> used to initialize the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.TypeContent`1"/>.</param>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.TypeContent`1.#ctor(`0,System.Text.Encoding)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.TypeContent`1.#ctor(`0,System.Text.Encoding)">
             <summary>
-            Creates a new instance of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.TypeContent`1"/> class.
+            Creates a new instance of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.TypeContent`1"/> class.
             Default media type "application/json".
             </summary>
-            <param name="model">The object of type <typeparamref name="TRequestBody"/> used to initialize the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.TypeContent`1"/>.</param>
+            <param name="model">The object of type <typeparamref name="TRequestBody"/> used to initialize the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.TypeContent`1"/>.</param>
             <param name="encoding">The encoding to use for the json that will be added as content.</param>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.TypeContent`1.#ctor(`0,System.Text.Encoding,System.String)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.TypeContent`1.#ctor(`0,System.Text.Encoding,System.String)">
             <summary>
-            Creates a new instance of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.TypeContent`1"/> class.
+            Creates a new instance of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.TypeContent`1"/> class.
             </summary>
-            <param name="model">The object of type <typeparamref name="TRequestBody"/> used to initialize the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.TypeContent`1"/>.</param>
+            <param name="model">The object of type <typeparamref name="TRequestBody"/> used to initialize the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.TypeContent`1"/>.</param>
             <param name="encoding">The encoding to use for the json that will be added as content.</param>
             <param name="mediaType">The media type to use for the json that will be added as content.</param>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.ClientCredentialsHttpClient">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.ClientCredentialsHttpClient">
             <summary>
             The implementation of an access token service for client credentials based on IdentityServer4. 
             </summary>
         </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.ClientCredentialsHttpClient.HttpClientOptionsType">
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.ClientCredentialsHttpClient.HttpClientOptionsType">
             <summary>
-            The type of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions"/> implementation that this HttpClient needs
+            The type of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions"/> implementation that this HttpClient needs
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.ClientCredentialsHttpClient.#ctor(System.Net.Http.HttpClient)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.ClientCredentialsHttpClient.#ctor(System.Net.Http.HttpClient)">
             <summary>
-            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.ClientCredentialsHttpClient"/>.
+            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.ClientCredentialsHttpClient"/>.
             </summary>
             <param name="httpClient">An <see cref="T:System.Net.Http.HttpClient"/> that will execute the request</param>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.ClientCredentialsHttpClient.GetCacheKey(IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.ClientCredentialsHttpClient.GetCacheKey(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions)">
             <summary>
             Creates a unique key to be used as the cache key of the Identity Server access token, by combining infomration from the access token options object.
-            See <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions"/> for the access token options.
+            See <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions"/> for the access token options.
             </summary>
             <param name="options">The token service options</param>
             <returns>Returns a string representing a unique identifier to be used as the caching key, by getting the hashcode of the address, the client and scopes.</returns>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.ClientCredentialsHttpClient.GetTokenResponseAsync(IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.ClientCredentialsHttpClient.GetTokenResponseAsync(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions)">
             <summary>
             Retrieves a <see cref="T:IdentityModel.Client.TokenResponse"/> from the configured by the <paramref name="options"/>.
             </summary>
-            <param name="options">The <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions"/> for the IdentityServer4.</param>
+            <param name="options">The <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions"/> for the IdentityServer4.</param>
             <returns>A <see cref="T:IdentityModel.Client.TokenResponse"/> object.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.PasswordHttpClient">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.PasswordHttpClient">
             <summary>
             The implementation of an access token service for client credentials based on IdentityServer4. 
             </summary>
         </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.PasswordHttpClient.HttpClientOptionsType">
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.PasswordHttpClient.HttpClientOptionsType">
             <summary>
-            The type of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions"/> implementation that this HttpClient needs
+            The type of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions"/> implementation that this HttpClient needs
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.PasswordHttpClient.#ctor(System.Net.Http.HttpClient)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.PasswordHttpClient.#ctor(System.Net.Http.HttpClient)">
             <summary>
-            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.ClientCredentialsHttpClient"/>.
+            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.ClientCredentialsHttpClient"/>.
             </summary>
             <param name="httpClient">An <see cref="T:System.Net.Http.HttpClient"/> that will execute the request</param>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.PasswordHttpClient.GetCacheKey(IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.PasswordHttpClient.GetCacheKey(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions)">
             <summary>
             Creates a unique key to be used as the cache key of the Identity Server access token, by combining infomration from the access token options object.
-            See <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions"/> for the access token options.
+            See <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions"/> for the access token options.
             </summary>
             <param name="options">The token service options</param>
             <returns>Returns a string representing a unique identifier to be used as the caching key, by getting the hashcode of the address, the client, the username and the scopes.</returns>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.PasswordHttpClient.GetTokenResponseAsync(IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients.PasswordHttpClient.GetTokenResponseAsync(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions)">
             <summary>
             Retrieves a <see cref="T:IdentityModel.Client.TokenResponse"/> from the configured by the <paramref name="options"/>.
             </summary>
-            <param name="options">The <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions"/> for the IdentityServer4.</param>
+            <param name="options">The <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions"/> for the IdentityServer4.</param>
             <returns>A <see cref="T:IdentityModel.Client.TokenResponse"/> object.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServerHttpClientSelector">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.IdentityServerHttpClientSelector">
             <summary>
-            Selects the correct <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient"/> based on <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions"/>.
+            Selects the correct <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient"/> based on <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions"/>.
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServerHttpClientSelector.#ctor(System.Collections.Generic.IEnumerable{IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient})">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.IdentityServerHttpClientSelector.#ctor(System.Collections.Generic.IEnumerable{IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient})">
             <summary>
-            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServerHttpClientSelector"/>.
+            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.IdentityServerHttpClientSelector"/>.
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServerHttpClientSelector.Get(IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.IdentityServerHttpClientSelector.Get(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions)">
             <summary>
-            Finds the appropriate implementation of <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient"/> based on the <paramref name="options"/>.
+            Finds the appropriate implementation of <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient"/> based on the <paramref name="options"/>.
             </summary>
             <param name="options">The <paramref name="options"/> for retrieving an access token.</param>
-            <returns>An <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient"/>.</returns>
+            <returns>An <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient"/>.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServerService">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.IdentityServerService">
             <summary>
             The implementation of an access token service for client credentials based on IdentityServer4. 
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServerService.#ctor(IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClientSelector,IdentityServer4.Contrib.HttpClientService.Infrastructure.ITokenResponseCacheManager)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.IdentityServerService.#ctor(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClientSelector,IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.ITokenResponseCacheManager)">
             <summary>
-            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServerService"/>.
+            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.IdentityServerService"/>.
             </summary>
             <param name="identityServerHttpClientSelector">An Identity Server HTTP client selected that will fetch the correct HTTP client.</param>
             <param name="cache">A cache engine imlementation, to cache the token response.</param>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServerService.GetTokenResponseAsync(IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.IdentityServerService.GetTokenResponseAsync(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions)">
             <summary>
             Retrieves either a new access token using client credentials or the last valid from the caching engine.
             </summary>
             <param name="options">The token service options.</param>
             <returns>A <see cref="T:IdentityModel.Client.TokenResponse"/> instance.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient">
             <summary>
             Abstraction for a typed <see cref="T:System.Net.Http.HttpClient"/> that will execute the request to the IdentityServer4.
             </summary>
         </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient.HttpClientOptionsType">
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient.HttpClientOptionsType">
             <summary>
-            The type of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions"/> implementation
+            The type of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions"/> implementation
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient.GetCacheKey(IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient.GetCacheKey(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions)">
             <summary>
             Creates a unique key to be used as the cache key of the Identity Server access token, by combining infomration from the access token options object.
             </summary>
             <param name="options">The token service options</param>
             <returns>Returns a string representing a unique identifier to be used as the caching key.</returns>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient.GetTokenResponseAsync(IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient.GetTokenResponseAsync(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions)">
             <summary>
             Retrieves a <see cref="T:IdentityModel.Client.TokenResponse"/> from the configured by the <paramref name="options"/>.
             </summary>
             <param name="options">The configuration options for the IdentityServer4.</param>
             <returns>A <see cref="T:IdentityModel.Client.TokenResponse"/> object.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClientSelector">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClientSelector">
             <summary>
-            Abstraction for an <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient"/> selector. 
-            The correct client is selected based on <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions"/>.
+            Abstraction for an <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient"/> selector. 
+            The correct client is selected based on <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions"/>.
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClientSelector.Get(IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClientSelector.Get(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions)">
             <summary>
-            Finds the appropriate implementation of <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient"/> based on the <paramref name="options"/>
+            Finds the appropriate implementation of <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient"/> based on the <paramref name="options"/>
             </summary>
             <param name="options">The <paramref name="options"/> for retrieving an access token</param>
-            <returns>An <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerHttpClient"/></returns>
+            <returns>An <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerHttpClient"/></returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerService">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions">
+            <summary>
+            Contract that all IdentityServer options (e.g. <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions"/> or <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions"/>) must implement.
+            </summary>
+        </member>
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerService">
             <summary>
             Abstraction for an access token service.
             </summary>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IIdentityServerService.GetTokenResponseAsync(IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerService.GetTokenResponseAsync(IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.IIdentityServerOptions)">
             <summary>
             Retrieves a <see cref="T:IdentityModel.Client.TokenResponse"/>  from the configured Identity Server
             </summary>
             <param name="options">The token service options</param>
             <returns>A <see cref="T:IdentityModel.Client.TokenResponse"/> instance.</returns>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.ITokenResponseCacheManager">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.ITokenResponseCacheManager">
             <summary>
             Interface for the cache manager for the access token service. 
             </summary>
@@ -1316,7 +1321,7 @@
             It caches a successful response for the 75% of the expiration time define in the <see cref="T:IdentityModel.Client.TokenResponse"/>. 
             </remarks>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.ITokenResponseCacheManager.AddOrGetExistingAsync(System.String,System.Func{System.Threading.Tasks.Task{IdentityModel.Client.TokenResponse}})">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.ITokenResponseCacheManager.AddOrGetExistingAsync(System.String,System.Func{System.Threading.Tasks.Task{IdentityModel.Client.TokenResponse}})">
             <summary>
             Adds a new <see cref="T:IdentityModel.Client.TokenResponse"/> in the cache by executing the <paramref name="call"/> parameter, or returns an existing cached response.
             </summary>
@@ -1324,13 +1329,76 @@
             <param name="call">The delegate the returns a <see cref="T:IdentityModel.Client.TokenResponse"/>.</param>
             <returns>A <see cref="T:IdentityModel.Client.TokenResponse"/>, either just aqcuired or from the cache</returns>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.ITokenResponseCacheManager.Remove(System.String)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces.ITokenResponseCacheManager.Remove(System.String)">
             <summary>
             Removes an entry from the cache
             </summary>
             <param name="key">The key of the cache entry.</param>
         </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.TokenResponseCacheManager">
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions">
+            <summary>
+            Model for the client credentials options for IdentityServer4
+            </summary>
+        </member>
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions.Address">
+            <summary>
+            The address of the access token service.
+            (e.g. https://demo.identityserver.io/connect/token)
+            </summary>
+        </member>
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions.ClientId">
+            <summary>
+            The client id.
+            </summary>
+        </member>
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions.ClientSecret">
+            <summary>
+            The client secret.
+            </summary>
+        </member>
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.ClientCredentialsOptions.Scope">
+            <summary>
+            A space separated list of scopes.
+            </summary>
+        </member>
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions">
+            <summary>
+            Model for the password options for IdentityServer4.
+            </summary>
+        </member>
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions.Address">
+            <summary>
+            The address of the access token service.
+            (e.g. https://demo.identityserver.io/connect/token)
+            </summary>
+        </member>
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions.ClientId">
+            <summary>
+            The client id.
+            </summary>
+        </member>
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions.ClientSecret">
+            <summary>
+            The client secret.
+            </summary>
+        </member>
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions.Scope">
+            <summary>
+            A space seperated list of scopes.
+            </summary>
+        </member>
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions.Username">
+            <summary>
+            The username of the user trying to get access.
+            </summary>
+        </member>
+        <member name="P:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models.PasswordOptions.Password">
+            <summary>
+            The password of the user trying to get access.
+            It will be hashed using SHA256 before sending it to the IdentityServer.
+            </summary>
+        </member>
+        <member name="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.TokenResponseCacheManager">
             <summary>
             Cache manager for the IdentityServer4 <see cref="T:IdentityModel.Client.TokenResponse"/>. 
             </summary>
@@ -1338,13 +1406,13 @@
             It caches a successful response for the 75% of the expiration time define in the <see cref="T:IdentityModel.Client.TokenResponse"/>. 
             </remarks>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.TokenResponseCacheManager.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.TokenResponseCacheManager.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache)">
             <summary>
-            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.TokenResponseCacheManager"/>.
+            Constructor of the <see cref="T:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.TokenResponseCacheManager"/>.
             </summary>
             <param name="memoryCache">The in-memory cache.</param>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.TokenResponseCacheManager.AddOrGetExistingAsync(System.String,System.Func{System.Threading.Tasks.Task{IdentityModel.Client.TokenResponse}})">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.TokenResponseCacheManager.AddOrGetExistingAsync(System.String,System.Func{System.Threading.Tasks.Task{IdentityModel.Client.TokenResponse}})">
             <summary>
             Adds a new <see cref="T:IdentityModel.Client.TokenResponse"/> in the cache by executing the <paramref name="call"/> parameter, or returns an existing cached response.
             </summary>
@@ -1352,79 +1420,11 @@
             <param name="call">The delegate the returns a <see cref="T:IdentityModel.Client.TokenResponse"/>.</param>
             <returns>A <see cref="T:IdentityModel.Client.TokenResponse"/>, either just aqcuired or from the cache</returns>
         </member>
-        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.TokenResponseCacheManager.Remove(System.String)">
+        <member name="M:IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.TokenResponseCacheManager.Remove(System.String)">
             <summary>
             Removes an entry from the cache
             </summary>
             <param name="key">The key of the cache entry.</param>
-        </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Models.IIdentityServerOptions">
-            <summary>
-            Contract that all IdentityServer options (e.g. <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions"/> or <see cref="T:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions"/>) must implement.
-            </summary>
-        </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions">
-            <summary>
-            Model for the client credentials options for IdentityServer4
-            </summary>
-        </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions.Address">
-            <summary>
-            The address of the access token service.
-            (e.g. https://demo.identityserver.io/connect/token)
-            </summary>
-        </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions.ClientId">
-            <summary>
-            The client id.
-            </summary>
-        </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions.ClientSecret">
-            <summary>
-            The client secret.
-            </summary>
-        </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Models.ClientCredentialsOptions.Scope">
-            <summary>
-            A space seperated list of scopes.
-            </summary>
-        </member>
-        <member name="T:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions">
-            <summary>
-            Model for the password options for IdentityServer4.
-            </summary>
-        </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions.Address">
-            <summary>
-            The address of the access token service.
-            (e.g. https://demo.identityserver.io/connect/token)
-            </summary>
-        </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions.ClientId">
-            <summary>
-            The client id.
-            </summary>
-        </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions.ClientSecret">
-            <summary>
-            The client secret.
-            </summary>
-        </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions.Scope">
-            <summary>
-            A space seperated list of scopes.
-            </summary>
-        </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions.Username">
-            <summary>
-            The username of the user trying to get access.
-            </summary>
-        </member>
-        <member name="P:IdentityServer4.Contrib.HttpClientService.Models.PasswordOptions.Password">
-            <summary>
-            The password of the user trying to get access.
-            It will be hashed using SHA256 before sending it to the IdentityServer.
-            </summary>
         </member>
         <member name="T:IdentityServer4.Contrib.HttpClientService.Models.HttpClientServiceOptions">
             <summary>

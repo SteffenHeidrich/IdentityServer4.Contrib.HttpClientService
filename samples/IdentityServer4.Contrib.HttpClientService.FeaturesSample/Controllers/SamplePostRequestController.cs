@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using IdentityServer4.Contrib.HttpClientService.Extensions;
 using System;
-using System.Linq;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
 using System.Text;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core;
 
 namespace IdentityServer4.Contrib.HttpClientService.FeaturesSample.Controllers
 {

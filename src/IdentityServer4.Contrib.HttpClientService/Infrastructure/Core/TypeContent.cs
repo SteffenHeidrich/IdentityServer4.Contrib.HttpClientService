@@ -1,12 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.Serialization;
 using System.Text;
+using Newtonsoft.Json;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.Core
 {
     /// <summary>
     /// TypeContent is following the implementation of <see cref="StringContent"/>.
@@ -22,8 +20,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
         /// Default encoding is "UTF8" and media type "application/json".
         /// </summary>
         /// <param name="model">The object of type <typeparamref name="TRequestBody"/> used to initialize the <see cref="TypeContent{TRequestBody}"/>.</param>
-        public TypeContent(TRequestBody model)
-            : this(model, null, null)
+        public TypeContent(TRequestBody model) : this(model, null, null)
         {
         }
 

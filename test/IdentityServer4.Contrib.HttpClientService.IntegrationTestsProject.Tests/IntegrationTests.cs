@@ -1,14 +1,11 @@
-using Microsoft.AspNetCore.Mvc.Testing;
 using System;
-using System.Diagnostics;
-using System.Net.Http;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
-using System.Linq;
-using IdentityServer4.Contrib.HttpClientService.IntegrationTestsProject;
 
-namespace IdentityServer4.Contrib.HttpClientService.FeaturesSample.Tests
+namespace IdentityServer4.Contrib.HttpClientService.IntegrationTestsProject.Tests
 {
     public class IntegrationTests
         : IClassFixture<WebApplicationFactory<Startup>>

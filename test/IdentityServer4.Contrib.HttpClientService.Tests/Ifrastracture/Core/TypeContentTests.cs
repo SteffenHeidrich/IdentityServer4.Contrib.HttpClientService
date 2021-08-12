@@ -1,10 +1,9 @@
-﻿using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
+﻿using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CommonValues;
 
 namespace IdentityServer4.Contrib.HttpClientService.Tests.Ifrastracture.Core
 {

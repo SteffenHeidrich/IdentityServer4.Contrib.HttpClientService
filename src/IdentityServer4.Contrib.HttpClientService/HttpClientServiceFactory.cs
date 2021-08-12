@@ -1,19 +1,14 @@
 ﻿using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using System.IO;
 using System.Collections.Generic;
-using System.Configuration;
-using Microsoft.Extensions.Configuration;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 
 namespace IdentityServer4.Contrib.HttpClientService
 {

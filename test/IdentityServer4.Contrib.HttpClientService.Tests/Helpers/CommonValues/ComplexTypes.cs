@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers
+﻿namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CommonValues
 {
     public static class ComplexTypes
     {

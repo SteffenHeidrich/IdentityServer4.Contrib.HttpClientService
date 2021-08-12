@@ -1,22 +1,15 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using Microsoft.Extensions.Options;
-using IdentityServer4.Contrib.HttpClientService;
-using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using System.Net;
-using IdentityModel.Client;
 using System;
 using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Text;
-using System.Net.Http.Headers;
-using System.Collections.Generic;
+using System.Threading.Tasks;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CommonValues;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientServiceMocks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IdentityServer4.Contrib.HttpClientService.Test
+namespace IdentityServer4.Contrib.HttpClientService.Tests
 {
     [TestClass]
     public class HttpClientServiceTests_RequestTypes
@@ -25,7 +18,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_ComplexRequestType_ShouldSerializeAndSent()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
 
             var result = await httpClientService.SendAsync<ComplexTypes.ComplexTypeRequest, string>(
                     new Uri("http://localhost"),
@@ -44,7 +37,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_TypeContentRequestTypeDefault_ShouldSerializeAndSent()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
 
             var result = await httpClientService.SendAsync<TypeContent<ComplexTypes.ComplexTypeRequest>, string>(
                     new Uri("http://localhost"),
@@ -64,7 +57,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_TypeContentRequestTypeWithHeaders_ShouldSerializeAndSent()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
 
             var result = await httpClientService.SendAsync<TypeContent<ComplexTypes.ComplexTypeRequest>, string>(
                     new Uri("http://localhost"),
@@ -83,7 +76,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_PrimitiveRequestType_ShouldSerializeAndSent()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
 
             var result = await httpClientService.SendAsync<int, string>(
                     new Uri("http://localhost"),
@@ -102,7 +95,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_StringContentRequestTypeWithHeaders_ShouldSerializeAndSent()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
 
             var result = await httpClientService.SendAsync<StringContent, string>(
                     new Uri("http://localhost"),
@@ -121,7 +114,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_StreamContentRequestType_ShouldSentAsStream()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.Created, "body_of_response", true);
 
             using (var memoryStream = new MemoryStream())
             using (var writer = new StreamWriter(memoryStream))

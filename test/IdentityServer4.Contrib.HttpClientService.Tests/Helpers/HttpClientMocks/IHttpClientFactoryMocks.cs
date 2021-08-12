@@ -1,13 +1,9 @@
-﻿using Moq;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using IdentityModel.Client;
+﻿using System.IO;
 using System.Net;
-using System.IO;
+using System.Net.Http;
+using Moq;
 
-namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientMocks
 {
     public static class IHttpClientFactoryMocks
     {

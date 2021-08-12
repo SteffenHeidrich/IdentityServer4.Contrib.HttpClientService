@@ -1,11 +1,9 @@
-﻿using IdentityModel.Client;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using Microsoft.Extensions.Options;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IdentityModel.Client;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces
 {
     /// <summary>
     /// Abstraction for a typed <see cref="HttpClient"/> that will execute the request to the IdentityServer4.

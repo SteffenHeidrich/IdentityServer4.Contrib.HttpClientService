@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces
 {
     /// <summary>
     /// Abstraction for a typed <see cref="HttpClient"/>.

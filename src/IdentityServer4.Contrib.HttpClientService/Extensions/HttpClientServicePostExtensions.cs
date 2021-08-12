@@ -2,7 +2,6 @@
 using System;
 using System.Threading.Tasks;
 using System.Net.Http;
-using System.IO;
 
 namespace IdentityServer4.Contrib.HttpClientService.Extensions
 {
@@ -11,7 +10,6 @@ namespace IdentityServer4.Contrib.HttpClientService.Extensions
     /// </summary>
     public static class HttpClientServicePostExtensions
     {
-
         /// <summary>
         /// Sends a POST request to the specified <paramref name="requestUri"/> using <paramref name="requestBody"/> as the body of the request
         /// with <typeparamref name="TRequestBody"/> as the type of the <paramref name="requestBody"/>.

@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
 using System;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces;
 
 namespace IdentityServer4.Contrib.HttpClientService.Extensions
 {
@@ -17,26 +21,20 @@ namespace IdentityServer4.Contrib.HttpClientService.Extensions
         /// <returns>An <see cref="IServiceCollection"/> that can be used to further configure the MVC services.</returns>
         public static IServiceCollection AddHttpClientService(this IServiceCollection services)
         {
-            services.AddHttpClient<IIdentityServerHttpClient, ClientCredentialsHttpClient>()
-                    .SetHandlerLifetime(TimeSpan.FromMinutes(5));
-            services.AddHttpClient<IIdentityServerHttpClient, PasswordHttpClient>()
-                    .SetHandlerLifetime(TimeSpan.FromMinutes(5));
+            services.AddHttpClient<IIdentityServerHttpClient, ClientCredentialsHttpClient>().SetHandlerLifetime(TimeSpan.FromMinutes(5));
+            services.AddHttpClient<IIdentityServerHttpClient, PasswordHttpClient>().SetHandlerLifetime(TimeSpan.FromMinutes(5));
             services.AddSingleton<IIdentityServerHttpClientSelector, IdentityServerHttpClientSelector>();
 
             services.AddSingleton<IIdentityServerService, IdentityServerService>();
             services.AddMemoryCache();
             services.AddSingleton<ITokenResponseCacheManager, TokenResponseCacheManager>();
 
-            services.AddHttpClient<ICoreHttpClient, CoreHttpClient>()
-                    .SetHandlerLifetime(TimeSpan.FromMinutes(5));
+            services.AddHttpClient<ICoreHttpClient, CoreHttpClient>().SetHandlerLifetime(TimeSpan.FromMinutes(5));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IHttpRequestMessageFactory, HttpRequestMessageFactory>();
             services.AddSingleton<IHttpClientServiceFactory, HttpClientServiceFactory>();
 
             return services;
         }
-        
     }
-
-
 }

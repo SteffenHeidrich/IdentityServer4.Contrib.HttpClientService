@@ -1,19 +1,10 @@
-﻿using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using System;
-using System.Linq;
+﻿using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using System.IO;
-using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
 using System.Threading;
+using System.Threading.Tasks;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.Core
 {
     /// <summary>
     /// Implementation for a typed <see cref="HttpClient"/>.

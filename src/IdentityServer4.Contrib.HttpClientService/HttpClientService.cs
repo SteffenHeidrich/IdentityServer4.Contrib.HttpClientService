@@ -4,20 +4,21 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
 using IdentityServer4.Contrib.HttpClientService.Models;
 using System.IO;
 using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
-using System.Runtime.Serialization;
 using IdentityModel.Client;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace IdentityServer4.Contrib.HttpClientService
 {
     /// <summary>
-    /// The request service implemantation
+    /// The request service implementation
     /// </summary>
     public class HttpClientService
     {
@@ -202,7 +203,7 @@ namespace IdentityServer4.Contrib.HttpClientService
         {
             if (_configuration == null)
             {
-                throw new InvalidOperationException("The string configuraton cannot be used with the the lazy singleton instance of " + nameof(HttpClientService) + " (" + nameof(HttpClientServiceFactory) + "." + nameof(HttpClientServiceFactory.Instance) + ")");
+                throw new InvalidOperationException("The string configuration cannot be used with the the lazy singleton instance of " + nameof(HttpClientService) + " (" + nameof(HttpClientServiceFactory) + "." + nameof(HttpClientServiceFactory.Instance) + ")");
             }
 
             var sectionExists = _configuration.GetChildren().Any(item => item.Key == configurationSection);
@@ -214,17 +215,17 @@ namespace IdentityServer4.Contrib.HttpClientService
             //todo: find better way
             if (configurationSection.ToLower().EndsWith(nameof(ClientCredentialsOptions).ToLower()))
             {
-                identityServerOptions = _configuration.GetSection(configurationSection).Get<ClientCredentialsOptions>();
+                identityServerOptions = _configuration.GetSection(configurationSection).GetSection("ClientCredentialsOptions") as IIdentityServerOptions;
             }
             else if (configurationSection.ToLower().EndsWith(nameof(PasswordOptions).ToLower()))
             {
-                identityServerOptions = _configuration.GetSection(configurationSection).Get<PasswordOptions>();
+                identityServerOptions = _configuration.GetSection(configurationSection).GetSection("PasswordOptions") as IIdentityServerOptions;
             }
             else
             {
                 //backward compatibility, v3 should eliminate this
-                identityServerOptions = _configuration.GetSection(configurationSection).Get<ClientCredentialsOptions>();
-                //throw new InvalidOperationException("The name or the suffix of the cofiguration section must be either '" + nameof(ClientCredentialsOptions) + "' or '" + nameof(PasswordOptions) + "'.");
+                identityServerOptions = _configuration.GetSection(configurationSection).GetSection("ClientCredentialsOptions") as IIdentityServerOptions;
+                //throw new InvalidOperationException("The name or the suffix of the configuration section must be either '" + nameof(ClientCredentialsOptions) + "' or '" + nameof(PasswordOptions) + "'.");
             }
 
             return this;

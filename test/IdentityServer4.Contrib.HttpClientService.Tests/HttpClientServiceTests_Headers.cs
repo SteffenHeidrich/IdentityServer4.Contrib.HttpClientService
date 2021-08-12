@@ -1,21 +1,14 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using Microsoft.Extensions.Options;
-using IdentityServer4.Contrib.HttpClientService;
-using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using System.Net;
-using IdentityModel.Client;
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientServiceMocks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IdentityServer4.Contrib.HttpClientService.Test
+namespace IdentityServer4.Contrib.HttpClientService.Tests
 {
     [TestClass]
     public class HttpClientServiceTests_Headers
@@ -24,7 +17,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_Headers_HeadersAddToRequest_ShouldAddOne()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
 
             var result = await httpClientService
                 .HeadersAdd("x-test-header", "x-test-value")
@@ -41,7 +34,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_Headers_HeadersAddListToRequest_ShouldAddList()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
 
             var result = await httpClientService
                 .HeadersAdd("x-test-header", new List<string> { "x-test-value-1", "x-test-value-2" })
@@ -59,7 +52,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_Headers_HeadersAddSecondSameToRequest_ShouldAggregate()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
 
             var result = await httpClientService
                 .HeadersAdd("x-test-header", "x-test-value-1")
@@ -78,7 +71,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_Headers_HeadersSet_ShouldReset()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
 
             var result = await httpClientService
                 .HeadersAdd("x-test-header", "x-test-value-1")
@@ -101,7 +94,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_Headers_HeadersSetList_ShouldNotReset()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
 
             var result = await httpClientService
                 .HeadersAdd("x-test-header", "x-test-value-1")
@@ -124,7 +117,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_Headers_HeadersClear_ShouldReset()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
 
             var result = await httpClientService
                 .HeadersAdd("x-test-header", "x-test-value-1")
@@ -141,7 +134,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_Headers_HeadersRemove_ShouldRemoveOne()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
 
             var result = await httpClientService
                 .HeadersAdd("x-test-header-1", "x-test-value-1")
@@ -162,7 +155,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [ExpectedException(typeof(InvalidOperationException))]
         public async Task HttpClientServiceTests_StringContentAndHeaders_ShouldFail()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
 
             await httpClientService
                  .HeadersAdd("Content-Type", "application/json; charset=utf-8")

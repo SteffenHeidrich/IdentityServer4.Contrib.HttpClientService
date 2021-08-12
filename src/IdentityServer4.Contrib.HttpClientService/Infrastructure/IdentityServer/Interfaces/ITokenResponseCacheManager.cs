@@ -1,8 +1,8 @@
-﻿using IdentityModel.Client;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using IdentityModel.Client;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces
 {
     /// <summary>
     /// Interface for the cache manager for the access token service. 

@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Net.Http;
+﻿using System.Net.Http;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core.Interfaces;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.Core
 {
     /// <summary>
     /// A <see cref="HttpRequestMessage"/> factory.
@@ -25,6 +24,5 @@ namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
         {
             return new HttpRequestMessage();           
         }
-
     }
 }

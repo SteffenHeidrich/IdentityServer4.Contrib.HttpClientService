@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using IdentityServer4.Contrib.HttpClientService.Extensions;
 using System;
 using System.IO;
 using System.Text;

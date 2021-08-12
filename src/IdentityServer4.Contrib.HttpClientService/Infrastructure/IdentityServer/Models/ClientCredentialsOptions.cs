@@ -1,4 +1,6 @@
-﻿namespace IdentityServer4.Contrib.HttpClientService.Models
+﻿using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces;
+
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models
 {
 
     /// <summary>
@@ -23,7 +25,7 @@
         public string ClientSecret { get; set; }
 
         /// <summary>
-        /// A space seperated list of scopes.
+        /// A space separated list of scopes.
         /// </summary>
         public string Scope { get; set; }
     }

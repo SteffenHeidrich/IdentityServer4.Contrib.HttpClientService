@@ -1,20 +1,21 @@
-﻿using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
-using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Options;
-using Moq;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces;
+using IdentityServer4.Contrib.HttpClientService.Models;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CacheMocks;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CommonValues;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientMocks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
-namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientServiceMocks
 {
     public static class HttpClientServiceInstances
     {

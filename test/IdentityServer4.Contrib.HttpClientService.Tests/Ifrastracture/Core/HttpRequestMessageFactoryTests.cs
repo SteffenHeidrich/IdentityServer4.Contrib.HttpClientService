@@ -1,15 +1,13 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
 using System;
-using Microsoft.Extensions.Options;
+using System.Linq;
+using System.Threading.Tasks;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.Core;
 using IdentityServer4.Contrib.HttpClientService.Models;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientServiceMocks;
+using Microsoft.Extensions.Options;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.Tests
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Ifrastracture.Core
 {
     [TestClass]
     public class HttpRequestMessageFactoryTests

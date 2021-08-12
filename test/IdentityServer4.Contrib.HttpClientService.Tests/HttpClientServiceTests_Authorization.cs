@@ -1,20 +1,13 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Linq;
+using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Models;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientServiceMocks;
 using Microsoft.Extensions.Options;
-using IdentityServer4.Contrib.HttpClientService;
-using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using System.Net;
-using IdentityModel.Client;
-using System;
-using System.IO;
-using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IdentityServer4.Contrib.HttpClientService.Test
+namespace IdentityServer4.Contrib.HttpClientService.Tests
 {
     [TestClass]
     public class HttpClientServiceTests_Authorization
@@ -23,7 +16,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_Authorization_NoIdentityServerOptions_ShouldRequestWitnNoAuth()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
 
             var result = await httpClientService.SendAsync<object, string>(
                 new Uri("http://localhost"),
@@ -39,7 +32,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_Authorization_WithIdentityServerOptions_ShouldRequestWitnAuth()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", true);
 
             httpClientService.SetIdentityServerOptions(
                 Options.Create(
@@ -72,7 +65,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceTests_Authorization_WithWrongIdentityServerOptions_ShouldHaveError()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", false);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, "body_of_response", false);
 
             httpClientService.SetIdentityServerOptions(
                 Options.Create(

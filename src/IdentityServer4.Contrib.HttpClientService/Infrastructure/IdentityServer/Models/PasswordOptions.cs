@@ -1,4 +1,6 @@
-﻿namespace IdentityServer4.Contrib.HttpClientService.Models
+﻿using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces;
+
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models
 {
 
     /// <summary>

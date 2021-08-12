@@ -1,21 +1,13 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Linq;
+using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using Microsoft.Extensions.Options;
-using IdentityServer4.Contrib.HttpClientService;
-using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using System.Net;
-using IdentityModel.Client;
-using System;
-using System.IO;
-using System.Collections.Generic;
 using IdentityServer4.Contrib.HttpClientService.Extensions;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CommonValues;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientServiceMocks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IdentityServer4.Contrib.HttpClientService.Test
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Extensions
 {
     [TestClass]
     public class HttpClientServiceDeleteExtensionsTests
@@ -24,7 +16,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceDelete_NoTypedResponse_ShouldBeResponseString()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.NoContent, "", true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.NoContent, "", true);
             var result = await httpClientService.DeleteAsync("http://localhost");
 
             //Status/HttpResponseMessage
@@ -43,7 +35,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServiceDelete_TypedResponse_ShouldBeResponseType()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, ComplexTypes.ComplexTypeResponseString, true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, ComplexTypes.ComplexTypeResponseString, true);
             var result = await httpClientService.DeleteAsync<ComplexTypes.ComplexTypeResponse>("http://localhost");
 
             //Status/HttpResponseMessage

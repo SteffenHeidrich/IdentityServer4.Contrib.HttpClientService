@@ -1,13 +1,10 @@
-﻿using IdentityModel.Client;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using Microsoft.Extensions.Caching.Memory;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using IdentityModel.Client;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces;
+using Moq;
 
-namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CacheMocks
 {
     public static class ITokenResponseCacheManagerMocks
     {

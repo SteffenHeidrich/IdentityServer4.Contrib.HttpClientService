@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Net.Http;
-using System.Threading.Tasks;
-using IdentityModel.Client;
-using Microsoft.Extensions.Options;
-using IdentityServer4.Contrib.HttpClientService.Extensions;
-using IdentityServer4.Contrib.HttpClientService.Models;
 using System.Collections.Generic;
 using System.Linq;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer
 {
 
     /// <summary>

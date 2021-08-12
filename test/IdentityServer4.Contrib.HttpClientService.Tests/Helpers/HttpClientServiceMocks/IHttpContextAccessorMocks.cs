@@ -1,12 +1,8 @@
 ﻿using IdentityServer4.Contrib.HttpClientService.Models;
 using Microsoft.AspNetCore.Http;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
 
-namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientServiceMocks
 {
     public static class IHttpContextAccessorMocks
     {

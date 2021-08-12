@@ -1,14 +1,17 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using Microsoft.Extensions.Options;
-using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
-using System.Net;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientMocks;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.Tests
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Ifrastracture
 {
     [TestClass]
     public class IdentityServerHttpClientSelectorTests

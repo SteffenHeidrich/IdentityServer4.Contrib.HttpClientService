@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using Microsoft.Extensions.Options;
 using IdentityServer4.Contrib.HttpClientService.Extensions;
 
 namespace IdentityServer4.Contrib.HttpClientService.IntegrationTestsProject.Controllers

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models;
 
-namespace IdentityServer4.Contrib.HttpClientService.Models
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces
 {
     /// <summary>
     /// Contract that all IdentityServer options (e.g. <see cref="ClientCredentialsOptions"/> or <see cref="PasswordOptions"/>) must implement.

@@ -1,22 +1,14 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using Microsoft.Extensions.Options;
-using IdentityServer4.Contrib.HttpClientService;
-using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
-using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using System.Net;
-using IdentityModel.Client;
-using System;
 using System.IO;
-using System.Collections.Generic;
-using IdentityServer4.Contrib.HttpClientService.Extensions;
+using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using IdentityServer4.Contrib.HttpClientService.Extensions;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CommonValues;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientServiceMocks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IdentityServer4.Contrib.HttpClientService.Test
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Extensions
 {
     [TestClass]
     public class HttpClientServicePostExtensionsTests
@@ -25,7 +17,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServicePost_StreamRequestStringResponse_ShouldBeResponseString()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.Created, ComplexTypes.ComplexTypeResponseString, true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.Created, ComplexTypes.ComplexTypeResponseString, true);
 
             using (var memoryStream = new MemoryStream())
             using (var writer = new StreamWriter(memoryStream))
@@ -56,7 +48,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServicePost_NoTypesDefined_ShouldBeResponseString()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.OK, ComplexTypes.ComplexTypeResponseString, true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.OK, ComplexTypes.ComplexTypeResponseString, true);
 
             var result = await httpClientService.PostAsync(
                 "http://localhost",
@@ -79,7 +71,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServicePost_StringRequestStringResponse_ShouldBeResponseString()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.Created, ComplexTypes.ComplexTypeResponseString, true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.Created, ComplexTypes.ComplexTypeResponseString, true);
 
             var result = await httpClientService.PostAsync<string>(
                 "http://localhost",
@@ -102,7 +94,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServicePost_StringContentRequestStringResponse_ShouldBeResponseString()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.Created, ComplexTypes.ComplexTypeResponseString, true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.Created, ComplexTypes.ComplexTypeResponseString, true);
 
 
             var result = await httpClientService.PostAsync<string>(
@@ -129,7 +121,7 @@ namespace IdentityServer4.Contrib.HttpClientService.Test
         [TestMethod]
         public async Task HttpClientServicePost_ComplexTypeRequestStringResponse_ShouldBeResponseString()
         {
-            var httpClientService = await Tests.Helpers.HttpClientServiceInstances.GetNew(HttpStatusCode.Created, ComplexTypes.ComplexTypeResponseString, true);
+            var httpClientService = await HttpClientServiceInstances.GetNew(HttpStatusCode.Created, ComplexTypes.ComplexTypeResponseString, true);
 
             var result = await httpClientService.PostAsync<ComplexTypes.ComplexTypeRequest, string>(
                 "http://localhost",

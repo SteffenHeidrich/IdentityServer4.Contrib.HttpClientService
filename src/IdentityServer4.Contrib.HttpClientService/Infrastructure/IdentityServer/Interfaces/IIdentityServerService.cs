@@ -1,9 +1,7 @@
-﻿using IdentityModel.Client;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using Microsoft.Extensions.Options;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using IdentityModel.Client;
 
-namespace IdentityServer4.Contrib.HttpClientService.Infrastructure
+namespace IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Interfaces
 {
     /// <summary>
     /// Abstraction for an access token service.

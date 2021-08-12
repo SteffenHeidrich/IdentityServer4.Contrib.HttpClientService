@@ -1,11 +1,9 @@
-﻿using IdentityModel.Client;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
+﻿using System.Net;
 using System.Threading.Tasks;
+using IdentityModel.Client;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientMocks;
 
-namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CommonValues
 {
     public static class TokenResponseObjects
     {

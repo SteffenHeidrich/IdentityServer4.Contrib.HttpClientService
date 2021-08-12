@@ -10,7 +10,6 @@ namespace IdentityServer4.Contrib.HttpClientService.Extensions
     /// </summary>
     public static class HttpClientServiceDeleteExtensions
     {
-
         /// <summary>
         /// Sends a DELETE request to the specified <paramref name="requestUri"/> and returns the response wrapped in a <see cref="ResponseObject{TResponseBody}"/> in an asynchronous operation.
         /// 
@@ -76,7 +75,6 @@ namespace IdentityServer4.Contrib.HttpClientService.Extensions
             return await httpClientService.SendAsync<object, TResponseBody>( new Uri(requestUri), HttpMethod.Delete, null);
         }
 
-
         /// <summary>
         /// Sends a DELETE request to the specified <paramref name="requestUri"/> and returns the response wrapped in a <see cref="ResponseObject{TResponseBody}"/> in an asynchronous operation.
         /// </summary>
@@ -90,6 +88,5 @@ namespace IdentityServer4.Contrib.HttpClientService.Extensions
         {
             return await httpClientService.SendAsync<object, string>(new Uri(requestUri), HttpMethod.Delete, null);
         }
-
     }
 }

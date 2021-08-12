@@ -1,14 +1,13 @@
-﻿using IdentityServer4.Contrib.HttpClientService.Infrastructure;
-using IdentityServer4.Contrib.HttpClientService.Models;
-using IdentityServer4.Contrib.HttpClientService.Tests.Helpers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.HttpClients;
+using IdentityServer4.Contrib.HttpClientService.Infrastructure.IdentityServer.Models;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.CommonValues;
+using IdentityServer4.Contrib.HttpClientService.Tests.Helpers.HttpClientMocks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IdentityServer4.Contrib.HttpClientService.Tests.Ifrastracture.Core
+namespace IdentityServer4.Contrib.HttpClientService.Tests.Ifrastracture.IdentityServer.HttpClients
 {
     [TestClass]
     public class PasswordHttpClientTests
